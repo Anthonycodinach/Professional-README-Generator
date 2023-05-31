@@ -1,9 +1,10 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer")
 const fs=require("fs")
+const generateMarkdown = require('../Develop/utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
-inquirer.prompt([
+const questions = inquirer.prompt([
    { type:"input",
     name:"projectTitle",
     message:"What would you like to call your project title?"
@@ -44,6 +45,16 @@ inquirer.prompt([
         "GNU General Public License v2.0", "GNU Lesser General Public License v2.1",
         "Mozilla Public License 2.0","The Unlicense"]
 },
+{
+    type:"input",
+    name:"githubUserName",
+    message:"Please enter your GitHub Username"
+},
+{
+    type:"input",
+    name:"emailAddress",
+    message:"Please enter your email address"
+},
 
 ]).then(response=> {
     const readMe = `
@@ -70,13 +81,18 @@ inquirer.prompt([
 
     ## Tests
     ${response.testInstructions}
+
+    ## Questions
+    If you have any questions about this application, you can reach me via email at ${response.emailAddress}
+
+    Feel free to visit my GitHub profile cointaining the code featured in this application: https://github.com/${response.githubUserName}
     `;
     // TODO: Create a function to write README file
     fs.writeFile("README.md",readMe,(error)=>{
         if (error) {
             console.log(error);
         } else {
-            console.log("README file succesfully genrated!");
+            console.log("README file succesfully generated!");
         }
     })
 });

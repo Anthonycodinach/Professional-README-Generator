@@ -1,6 +1,14 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  const noLicense = " "
+  if (license === ${response.licenses}) {
+    // Maybe use a switch statement
+} else {
+  return noLicense;
+}
+
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
